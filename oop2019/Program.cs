@@ -33,9 +33,12 @@ namespace oop2019
             Console.WriteLine();
 
 
-            Console.WriteLine("Exercise 5, FizzBuzz");
-            CoolGame();
+            Console.WriteLine("Exercise 5, Game");
+            //CoolGame();
+            Console.WriteLine();
 
+
+            Console.WriteLine("Exercise 6, Game with AI");
 
 
 
@@ -180,12 +183,41 @@ namespace oop2019
                         Console.WriteLine("A little bit to high");
                 else
                     if (input < (randomNumber - 5))
-                        Console.WriteLine("To low");
-                    else
-                        Console.WriteLine("Try just a little bigger number");
+                    Console.WriteLine("To low");
+                else
+                    Console.WriteLine("Try just a little bigger number");
             }
 
             Console.ReadKey();
+        } // Exercise 5, Game
+
+        static void CoolGameWithAi() // Exercise 5, Game with super AI
+        {
+            var computer = new NpcPlayer(1, 99);
+
+        }
+
+
+
+    }
+
+    class NpcPlayer {
+        public int guess { get; set; }
+        public int higherThan { get; set; }
+        public int lowerThen { get; set; }
+        public NpcPlayer(int higherThan, int lowerThen)
+        {
+            this.higherThan = higherThan;
+            this.lowerThen = lowerThen;
+        }
+
+        public int NpcGuess()
+        {
+            var random = new Random();
+
+            return random.Next(higherThan, lowerThen);
         }
     }
+
+
 }
