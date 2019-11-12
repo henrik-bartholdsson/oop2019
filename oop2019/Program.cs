@@ -11,18 +11,23 @@ namespace oop2019
         static void Main(string[] args)
         {
             Console.WriteLine("Exercise 1, give two numbers");
-            int x = ReadInt("Type a number: ");
-            int y = ReadInt("Type another number: ");
+           // int x = ReadInt("Type a number: ");
+           // int y = ReadInt("Type another number: ");
 
             Console.WriteLine();
-            Console.WriteLine($"{x} + {y} = {x + y}");
+           // Console.WriteLine($"{x} + {y} = {x + y}");
 
             Console.WriteLine();
-            Console.WriteLine("Exercise 1, give two years, 0 - 9999");
-            Years();
+            Console.WriteLine("Exercise 2, give two years, 0 - 9999");
+            // Years();
 
 
-            Console.Read(); // Pause to view the reasults.
+            Console.WriteLine();
+            Console.WriteLine("Exercise 3, check if palindrome");
+            Console.WriteLine(IsPalindrome("asA a s    a  "));
+            
+
+            Console.ReadKey(); // Pause to view the reasults.
         }
 
         static int ReadInt(string message) // Exercise 1, Method 1/1
@@ -75,8 +80,8 @@ namespace oop2019
                 try
                 {
                     year = Convert.ToInt32(Console.ReadLine());
-                    if (year < conA || year > conB)
-                        Console.WriteLine("Year must be between {0} and {1}", conA, conB);
+                    if (year <= conA || year > conB)
+                        Console.WriteLine("Year must be between {0} and {1}", (conA +1), conB);
                     else {
                         Console.WriteLine("Ok");
                         Console.WriteLine();
@@ -92,6 +97,17 @@ namespace oop2019
             return year;
         }
 
+        static bool IsPalindrome(string word) // Exercise 3, Palindrome
+        {
+            string processedWord = string.Concat(word.Where(ch => !char.IsWhiteSpace(ch))).ToLower();
+            var reversedWordArray = processedWord.ToCharArray();
+            Array.Reverse(reversedWordArray);
+            string reversedWord = new string(reversedWordArray);
 
+            if(processedWord.Equals(reversedWord))
+                return true;
+            else
+                return false;
+        }
     }
 }
