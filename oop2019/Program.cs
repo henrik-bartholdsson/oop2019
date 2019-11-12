@@ -25,7 +25,9 @@ namespace oop2019
             Console.WriteLine();
             Console.WriteLine("Exercise 3, check if palindrome");
             Console.WriteLine(IsPalindrome("asA a s    a  "));
-            
+
+            Console.WriteLine("Exercise 4, FizzBuzz");
+            FizzBuzz();
 
             Console.ReadKey(); // Pause to view the reasults.
         }
@@ -108,6 +110,23 @@ namespace oop2019
                 return true;
             else
                 return false;
+        }
+
+        static void FizzBuzz()
+        {
+            for(int i = 0; i <= 100; i++)
+            {
+                if(i % 3 == 0)
+                    Console.Write("Fizz");
+                
+                if(i % 5 == 0)
+                    Console.Write("Buzz");
+
+                if(i % 3 != 0 && i % 5 != 0)
+                    Console.Write(i);
+
+                Console.WriteLine();
+            }
         }
     }
 }
