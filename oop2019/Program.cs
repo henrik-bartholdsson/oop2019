@@ -16,23 +16,34 @@ namespace oop2019
 
             Console.WriteLine();
            // Console.WriteLine($"{x} + {y} = {x + y}");
-
             Console.WriteLine();
+
+
             Console.WriteLine("Exercise 2, give two years, 0 - 9999");
-            // Years();
-
-
+            // Years(); // Calls a second method
             Console.WriteLine();
+
+
             Console.WriteLine("Exercise 3, check if palindrome");
-            Console.WriteLine(IsPalindrome("asA a s    a  "));
+            //Console.WriteLine(IsPalindrome("asA a s    a  "));
+
 
             Console.WriteLine("Exercise 4, FizzBuzz");
-            FizzBuzz();
+            //FizzBuzz();
+            Console.WriteLine();
+
+
+            Console.WriteLine("Exercise 5, FizzBuzz");
+            CoolGame();
+
+
+
+
 
             Console.ReadKey(); // Pause to view the reasults.
         }
 
-        static int ReadInt(string message) // Exercise 1, Method 1/1
+        static int ReadInt(string message) // Exercise 1
         {
             int returningNumber;
             while (true)
@@ -112,7 +123,7 @@ namespace oop2019
                 return false;
         }
 
-        static void FizzBuzz()
+        static void FizzBuzz() // Exercise 4, FizzBuzz
         {
             for(int i = 0; i <= 100; i++)
             {
@@ -127,6 +138,29 @@ namespace oop2019
 
                 Console.WriteLine();
             }
+        }
+
+        static void CoolGame()
+        {
+            Console.WriteLine("Wellcome to the cooles game evah!.");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            var random = new Random();
+            int randomNumber = random.Next(1, 99);
+
+            int input = 0;
+
+            while(input != randomNumber)
+            {
+
+            }
+
+            if(input == randomNumber)
+            {
+
+            }
+
         }
     }
 }
