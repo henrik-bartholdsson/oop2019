@@ -11,11 +11,11 @@ namespace oop2019
         static void Main(string[] args)
         {
             Console.WriteLine("Exercise 1, give two numbers");
-           // int x = ReadInt("Type a number: ");
-           // int y = ReadInt("Type another number: ");
+            // int x = ReadInt("Type a number: ");
+            // int y = ReadInt("Type another number: ");
 
             Console.WriteLine();
-           // Console.WriteLine($"{x} + {y} = {x + y}");
+            // Console.WriteLine($"{x} + {y} = {x + y}");
             Console.WriteLine();
 
 
@@ -71,11 +71,11 @@ namespace oop2019
             Console.WriteLine("-- Amazing Leap Year Calculator 2019 --");
             int firstYear = GetYear(0, 9999, true);
             int secondYear = GetYear(firstYear, 9999, false);
-            
+
             for (int i = firstYear; i <= secondYear; i++)
             {
                 Console.Write(i);
-                if(i % 4 == 0)
+                if (i % 4 == 0)
                     Console.Write(" *");
                 Console.WriteLine();
             }
@@ -86,7 +86,7 @@ namespace oop2019
             int year;
             while (true)
             {
-                if(first)
+                if (first)
                     Console.Write("First year: ");
                 else
                     Console.Write("Second year: ");
@@ -94,8 +94,9 @@ namespace oop2019
                 {
                     year = Convert.ToInt32(Console.ReadLine());
                     if (year <= conA || year > conB)
-                        Console.WriteLine("Year must be between {0} and {1}", (conA +1), conB);
-                    else {
+                        Console.WriteLine("Year must be between {0} and {1}", (conA + 1), conB);
+                    else
+                    {
                         Console.WriteLine("Ok");
                         Console.WriteLine();
                         break;
@@ -117,7 +118,7 @@ namespace oop2019
             Array.Reverse(reversedWordArray);
             string reversedWord = new string(reversedWordArray);
 
-            if(processedWord.Equals(reversedWord))
+            if (processedWord.Equals(reversedWord))
                 return true;
             else
                 return false;
@@ -125,15 +126,15 @@ namespace oop2019
 
         static void FizzBuzz() // Exercise 4, FizzBuzz
         {
-            for(int i = 0; i <= 100; i++)
+            for (int i = 0; i <= 100; i++)
             {
-                if(i % 3 == 0)
+                if (i % 3 == 0)
                     Console.Write("Fizz");
-                
-                if(i % 5 == 0)
+
+                if (i % 5 == 0)
                     Console.Write("Buzz");
 
-                if(i % 3 != 0 && i % 5 != 0)
+                if (i % 3 != 0 && i % 5 != 0)
                     Console.Write(i);
 
                 Console.WriteLine();
@@ -142,25 +143,49 @@ namespace oop2019
 
         static void CoolGame()
         {
-            Console.WriteLine("Wellcome to the cooles game evah!.");
+            Console.WriteLine("Wellcome to the coolest game.");
             Console.WriteLine();
+            Console.WriteLine("Try ti guess the right number btween 1 and 99");
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
+            Console.WriteLine("A random number is generated");
             var random = new Random();
             int randomNumber = random.Next(1, 99);
 
             int input = 0;
 
-            while(input != randomNumber)
+            while (true)
             {
+                try
+                {
+                    Console.Write("Number: ");
+                    input = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Bad input.");
+                    Console.WriteLine("Try again.");
+                }
 
+                if (input == randomNumber)
+                {
+                    Console.WriteLine("That is correct!");
+                    break;
+                }
+
+                if (input > randomNumber)
+                    if (input > (randomNumber + 5))
+                        Console.WriteLine("To high");
+                    else
+                        Console.WriteLine("A little bit to high");
+                else
+                    if (input < (randomNumber - 5))
+                        Console.WriteLine("To low");
+                    else
+                        Console.WriteLine("Try just a little bigger number");
             }
 
-            if(input == randomNumber)
-            {
-
-            }
-
+            Console.ReadKey();
         }
     }
 }
