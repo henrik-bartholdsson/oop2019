@@ -13,33 +13,27 @@ namespace oop2019
             Console.WriteLine("Exercise 1, give two numbers");
             // int x = ReadInt("Type a number: ");
             // int y = ReadInt("Type another number: ");
-
             Console.WriteLine();
             // Console.WriteLine($"{x} + {y} = {x + y}");
             Console.WriteLine();
-
 
             Console.WriteLine("Exercise 2, give two years, 0 - 9999");
             // Years(); // Calls a second method
             Console.WriteLine();
 
-
             Console.WriteLine("Exercise 3, check if palindrome");
             //Console.WriteLine(IsPalindrome("asA a s    a  "));
-
 
             Console.WriteLine("Exercise 4, FizzBuzz");
             //FizzBuzz();
             Console.WriteLine();
 
-
             Console.WriteLine("Exercise 5, Game");
             //CoolGame();
             Console.WriteLine();
 
-
             Console.WriteLine("Exercise 6, Game with AI");
-
+            CoolGameWithAi();
 
 
 
