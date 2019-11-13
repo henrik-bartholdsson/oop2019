@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,8 +40,10 @@ namespace oop2019
             //LoadingBars();
 
             Console.WriteLine("Exercise 8, Christmars Tree");
-            RenderTree();
+            //RenderTree();
 
+            Console.WriteLine("Exercise 9, Calculate land");
+            CalculateLandArea();
 
             Console.ReadKey(); // Pause to view the reasults.
         }
@@ -338,9 +341,26 @@ namespace oop2019
 
         static void CalculateLandArea() // Exercise 9, Calculate land
         {
+            int landArea = 0;
+            int waterSurface = 0;
+            var Lines = File.ReadLines(@"C:\map.txt");
 
-            
-
+            foreach(var l in Lines)
+            {
+                foreach (var c in l)
+                {
+                    if (c.Equals('#'))
+                        landArea++;
+                    else if (c.Equals('.'))
+                        waterSurface++;
+                }
+            }
+            Console.WriteLine("----------- Absolute numbers -----------");
+            Console.WriteLine("Land area: " + landArea);
+            Console.WriteLine("Water surface:" + waterSurface);
+            Console.WriteLine();
+            Console.WriteLine("----------- Relative -----------");
+            Console.WriteLine("Land area: " + Math.Round(Decimal.Divide(landArea, (landArea + waterSurface)), 3));
         }
 
         static int CalculateNumberOfLandTiles()
