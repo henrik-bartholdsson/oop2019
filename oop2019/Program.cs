@@ -35,8 +35,11 @@ namespace oop2019
             Console.WriteLine("Exercise 6, Game with AI");
             //CoolGameWithAi();
 
+            Console.WriteLine("Exercise 7, C64 loding bars");
+            //LoadingBars();
 
-            LoadingBars();
+            Console.WriteLine("Exercise 8, Christmars Tree");
+            RenderTree();
 
 
             Console.ReadKey(); // Pause to view the reasults.
@@ -304,8 +307,12 @@ namespace oop2019
         {
             Console.WriteLine("Input size of thew tree");
             var random = new Random();
+            int nrOfAsterisk = 1;
             int leftMargin = 0;
             int treeSize = 0;
+            var repeated = new string('*', nrOfAsterisk);
+
+
             try
             {
                 treeSize = Convert.ToInt32(Console.ReadLine());
@@ -318,11 +325,30 @@ namespace oop2019
 
             leftMargin = treeSize + 1;
 
-            for (int i = 0; i< treeSize; i++)
+            for (int i = 0; i < treeSize; i++)
             {
-
+                Console.WriteLine(string.Join("", Enumerable.Repeat(' ', leftMargin)) + string.Join("", Enumerable.Repeat('*', nrOfAsterisk)));
+                nrOfAsterisk += 2;
+                leftMargin--;
             }
+            Console.Write(string.Join("", Enumerable.Repeat(' ', treeSize)));
+            Console.WriteLine("[]");
+            Console.ReadKey();
+        }
 
+        static void CalculateLandArea() // Exercise 9, Calculate land
+        {
+
+            
+
+        }
+
+        static int CalculateNumberOfLandTiles()
+        {
+
+
+
+            return 1;
         }
 
     }
