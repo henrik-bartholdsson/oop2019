@@ -33,13 +33,16 @@ namespace oop2019
             Console.WriteLine();
 
             Console.WriteLine("Exercise 6, Game with AI");
-            CoolGameWithAi();
+            //CoolGameWithAi();
 
+
+            LoadingBars();
 
 
             Console.ReadKey(); // Pause to view the reasults.
         }
 
+        /// Metoder
         static int ReadInt(string message) // Exercise 1
         {
             int returningNumber;
@@ -196,11 +199,11 @@ namespace oop2019
             var computer = new NpcPlayer(lowerNumber, upperNumber);
 
             var randomObj = new Random();
-            bool humanStarts = randomObj.Next(0,2) == 0 ? false : true;
+            bool humanStarts = randomObj.Next(0, 2) == 0 ? false : true;
             int randomNumber = randomObj.Next(lowerNumber, upperNumber);
 
             Console.WriteLine("Gissa ett tal mellan {0} och {1} " + humanStarts, lowerNumber, upperNumber);
-            if(humanStarts)
+            if (humanStarts)
                 Console.WriteLine("Human starts");
             else
                 Console.WriteLine("Computer starts");
@@ -223,7 +226,7 @@ namespace oop2019
                         }
                         else
                         {
-                            if(randomNumber > HumanGuess)
+                            if (randomNumber > HumanGuess)
                                 Console.WriteLine("Try a bigger number");
                             else
                                 Console.WriteLine("Try a lower number");
@@ -251,11 +254,13 @@ namespace oop2019
                     }
                     else
                     {
-                        if (randomNumber > CPUguess) { 
+                        if (randomNumber > CPUguess)
+                        {
                             Console.WriteLine("CPU! Try a bigger number");
                             computer.higherThan = CPUguess;
                         }
-                        else { 
+                        else
+                        {
                             Console.WriteLine("CPU! Try a lower number");
                             computer.lowerThen = CPUguess;
                         }
@@ -269,13 +274,46 @@ namespace oop2019
             Console.ReadKey();
         }
 
+        static void LoadingBars() // Exercise 7, C64 loading bars
+        {
+            ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
 
+            var random = new Random();
+            int additive = 0;
+            int stop = 10;
+            while (stop > 0)
+            {
+                for (int i = 0; i < 30; i++)
+                {
+                    additive = random.Next(5, 30);
+                    foreach (var c in colors)
+                    {
+                        Console.BackgroundColor = c;
+                        Console.ForegroundColor = c;
+                        for (int j = 0; j < (120 + additive); j++)
+                        {
+                            Console.Write(0);
+                        }
+                    }
+                    System.Threading.Thread.Sleep(50);
+                }
+                stop--;
+            }
+        }
 
 
 
     }
 
-    class NpcPlayer {
+
+
+
+
+
+
+    // Klasser!
+    class NpcPlayer
+    {
         public int guess { get; set; }
         public int higherThan { get; set; }
         public int lowerThen { get; set; }
