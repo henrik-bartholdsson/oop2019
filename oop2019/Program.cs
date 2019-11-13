@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,13 @@ namespace oop2019
             //RenderTree();
 
             Console.WriteLine("Exercise 9, Calculate land");
-            CalculateLandArea();
+            //CalculateLandArea();
+
+            Console.WriteLine("Exercise 10, Invader");
+            //Invader();
+
+            Console.WriteLine("Exercise 11, Calculator");
+            Calculator();
 
             Console.ReadKey(); // Pause to view the reasults.
         }
@@ -323,7 +330,7 @@ namespace oop2019
             catch
             {
                 Console.WriteLine("So you're a trubble maker!? Then we pic a size for you!");
-                treeSize = random.Next(5,9);
+                treeSize = random.Next(5, 9);
             }
 
             leftMargin = treeSize + 1;
@@ -345,7 +352,7 @@ namespace oop2019
             int waterSurface = 0;
             var Lines = File.ReadLines(@"C:\map.txt");
 
-            foreach(var l in Lines)
+            foreach (var l in Lines)
             {
                 foreach (var c in l)
                 {
@@ -363,13 +370,70 @@ namespace oop2019
             Console.WriteLine("Land area: " + Math.Round(Decimal.Divide(landArea, (landArea + waterSurface)), 3));
         }
 
-        static int CalculateNumberOfLandTiles()
+        static void Invader()
         {
+            var invader = new[,]
+                {
+                    { 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0 },
+                    { 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
+                    { 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
+                    { 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0 },
+                    { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                    { 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
+                    { 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1 },
+                    { 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0 }
+                };
+        } // Exercise 10, Invader
 
+        static void Calculator()
+        {
+            var formula = "1 + 2 * 3 / 9";
 
+            var result = CalculateString(formula);
+            Console.WriteLine("{0} = {1}", formula, result);
+
+        } // Exercise 11, Calc 1/2
+
+        public static int CalculateString(string formula)
+        {
+            int result;
+            var calc = new string[formula.Split(' ').Length];
+            int countTracker = 0;
+
+            foreach (char c in formula)
+            {
+                if (!c.Equals(' '))
+                    calc[countTracker] += c.ToString();
+
+                if (c.Equals(' '))
+                countTracker++;
+            }
+
+            result = Convert.ToInt32(calc[0]);
+            for(int i = 1; i < calc.Length; i++)
+            {
+                if(i % 2 != 0)
+                    switch(calc[i])
+                    {
+                        case "+":
+                            result = result + Convert.ToInt32(calc[i + 1]);
+                            break;
+                        case "-":
+                            result = result - Convert.ToInt32(calc[i + 1]);
+                            break;
+                        case "*":
+                            result = result * Convert.ToInt32(calc[i + 1]);
+                            break;
+                        case "/":
+                            result = result / Convert.ToInt32(calc[i + 1]);
+                            break;
+                    }
+            }
 
             return 1;
-        }
+        } // Exercise 11, Calc 1/2
+
+
 
     }
 
