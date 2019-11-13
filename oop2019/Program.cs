@@ -289,10 +289,9 @@ namespace oop2019
                     foreach (var c in colors)
                     {
                         Console.BackgroundColor = c;
-                        Console.ForegroundColor = c;
                         for (int j = 0; j < (120 + additive); j++)
                         {
-                            Console.Write(0);
+                            Console.Write(" ");
                         }
                     }
                     System.Threading.Thread.Sleep(50);
