@@ -185,11 +185,91 @@ namespace oop2019
             Console.ReadKey();
         } // Exercise 5, Game
 
-        static void CoolGameWithAi() // Exercise 5, Game with super AI
+        static void CoolGameWithAi() // Exercise 6, Game with super AI
         {
-            var computer = new NpcPlayer(1, 99);
+            int lowerNumber = 1;
+            int upperNumber = 99;
 
+            int CPUguess = 0;
+            int HumanGuess = 0;
+
+            var computer = new NpcPlayer(lowerNumber, upperNumber);
+
+            var randomObj = new Random();
+            bool humanStarts = randomObj.Next(0,2) == 0 ? false : true;
+            int randomNumber = randomObj.Next(lowerNumber, upperNumber);
+
+            Console.WriteLine("Gissa ett tal mellan {0} och {1} " + humanStarts, lowerNumber, upperNumber);
+            if(humanStarts)
+                Console.WriteLine("Human starts");
+            else
+                Console.WriteLine("Computer starts");
+
+            while (true)
+            {
+                if (humanStarts)
+                {
+                    Console.WriteLine("------------------------------------------");
+                    Console.Write("Human, pick a number: ");
+                    try
+                    {
+                        HumanGuess = Convert.ToInt32(Console.ReadLine());
+                        if (randomNumber == HumanGuess)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Correct! Human won.");
+                            Console.ResetColor();
+                            break;
+                        }
+                        else
+                        {
+                            if(randomNumber > HumanGuess)
+                                Console.WriteLine("Try a bigger number");
+                            else
+                                Console.WriteLine("Try a lower number");
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Bad input!");
+                    }
+
+                    humanStarts = false;
+                }
+                else
+                {
+                    Console.WriteLine("------------------------------------------");
+                    Console.Write("CPU pick your number: ");
+                    CPUguess = computer.NpcGuess();
+                    Console.WriteLine(CPUguess);
+                    if (randomNumber == CPUguess)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("CPU won!");
+                        Console.ResetColor();
+                        break;
+                    }
+                    else
+                    {
+                        if (randomNumber > CPUguess) { 
+                            Console.WriteLine("CPU! Try a bigger number");
+                            computer.higherThan = CPUguess;
+                        }
+                        else { 
+                            Console.WriteLine("CPU! Try a lower number");
+                            computer.lowerThen = CPUguess;
+                        }
+                    }
+
+                    humanStarts = true;
+                }
+            }
+
+
+            Console.ReadKey();
         }
+
+
 
 
 
@@ -207,11 +287,12 @@ namespace oop2019
 
         public int NpcGuess()
         {
+            System.Threading.Thread.Sleep(400);
             var random = new Random();
 
             return random.Next(higherThan, lowerThen);
         }
-    }
+    } // AIns medvetande.
 
 
 }
