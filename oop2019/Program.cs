@@ -300,7 +300,30 @@ namespace oop2019
             }
         }
 
+        static void RenderTree() // Exercise 8, Christmas tree.
+        {
+            Console.WriteLine("Input size of thew tree");
+            var random = new Random();
+            int leftMargin = 0;
+            int treeSize = 0;
+            try
+            {
+                treeSize = Convert.ToInt32(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("So you're a trubble maker!? Then we pic a size for you!");
+                treeSize = random.Next(5,9);
+            }
 
+            leftMargin = treeSize + 1;
+
+            for (int i = 0; i< treeSize; i++)
+            {
+
+            }
+
+        }
 
     }
 
