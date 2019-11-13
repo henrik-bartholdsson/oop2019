@@ -378,7 +378,7 @@ namespace oop2019
 
             return random.Next(higherThan, lowerThen);
         }
-    } // AIns medvetande.
+    } // AIns gudomliga medvetande.
 
 
 }
