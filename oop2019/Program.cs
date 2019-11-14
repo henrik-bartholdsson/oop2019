@@ -13,51 +13,36 @@ namespace oop2019
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Exercise 1, give two numbers");
+            // De tre första hör ihop! //
+
             // int x = ReadInt("Type a number: ");
             // int y = ReadInt("Type another number: ");
-            Console.WriteLine();
             // Console.WriteLine($"{x} + {y} = {x + y}");
-            Console.WriteLine();
 
-            Console.WriteLine("Exercise 2, give two years, 0 - 9999");
-            // Years(); // Calls a second method
-            Console.WriteLine();
+            // Years();
 
-            Console.WriteLine("Exercise 3, check if palindrome");
             //Console.WriteLine(IsPalindrome("asA a s    a  "));
 
-            Console.WriteLine("Exercise 4, FizzBuzz");
             //FizzBuzz();
-            Console.WriteLine();
 
-            Console.WriteLine("Exercise 5, Game");
             //CoolGame();
-            Console.WriteLine();
 
-            Console.WriteLine("Exercise 6, Game with AI");
             //CoolGameWithAi();
 
-            Console.WriteLine("Exercise 7, C64 loding bars");
             //LoadingBars();
 
-            Console.WriteLine("Exercise 8, Christmars Tree");
             //RenderTree();
 
-            Console.WriteLine("Exercise 9, Calculate land");
             //CalculateLandArea();
 
-            Console.WriteLine("Exercise 10, Invader");
-            //Invader();
+            Invader();
 
-            Console.WriteLine("Exercise 11, Calculator");
             //Calculator();
 
-            Console.WriteLine("Exercise 12, Tetris");
             //Tetris();
 
-            Console.WriteLine("Exercise 13, Create Tetris bag");
-            TetrisPieces();
+            //TetrisPieces();
+
 
             Console.ReadKey(); // Pause to view the reasults.
         }
@@ -377,10 +362,10 @@ namespace oop2019
             Console.WriteLine("Land area: " + Math.Round(Decimal.Divide(landArea, (landArea + waterSurface)), 3));
         }
 
-        static void Invader()
+        static void Invader() // Exercise 10, Invader
         {
             var invader = new[,]
-                {
+            {
                     { 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0 },
                     { 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
                     { 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
@@ -389,8 +374,41 @@ namespace oop2019
                     { 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1 },
                     { 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1 },
                     { 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0 }
-                };
-        } // Exercise 10, Invader
+            };
+
+            var random = new Random();
+            int buffTop = 0;
+            int buffLeft = 0;
+
+            for(int i = 0; i < invader.GetLength(0); i++)
+            {
+                for(int j = 0; j < invader.GetLength(1); j++)
+                {
+                    if(invader[i,j] == 1)
+                        Console.Write("**");
+                    else
+                        Console.Write("  ");
+                }
+                Console.WriteLine();
+            }
+
+            // Console.WriteLine("Enter to move the invader, Any key then Enter to exit.");
+            while (true)
+            {
+
+                
+                buffTop = random.Next(0,10);
+                buffLeft = random.Next(0, 10);
+
+                Console.MoveBufferArea(0, 0, 22,
+                           16, buffLeft, buffTop);
+                Thread.Sleep(500);
+
+                Console.MoveBufferArea(buffLeft, buffTop, 22,
+                           16, 0, 0);
+
+            }
+        }
 
         static void Calculator()
         {
@@ -525,7 +543,7 @@ namespace oop2019
             var delayRandomSeed = new Random();
             Console.Clear();
             var bagOfItems = new List<string>();
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Thread.Sleep(delayRandomSeed.Next(10, 30));
                 bagOfItems = CreateBag();
@@ -546,9 +564,9 @@ namespace oop2019
             var returningBag = new List<string>();
             int randomIndex;
 
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
-                rawMaterialBag.Add(i+1);
+                rawMaterialBag.Add(i + 1);
             }
 
             for (int i = 0; i < 7; i++)
@@ -557,13 +575,10 @@ namespace oop2019
                 returningBag.Add(rawMaterialBag[randomIndex].ToString());
                 rawMaterialBag.RemoveAt(randomIndex);
             }
-            
+
             return returningBag;
         } // Exercise 12, Tetris bag
 
-
-
-        // förbättra nr9
 
     }
 
