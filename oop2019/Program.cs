@@ -13,7 +13,9 @@ namespace oop2019
     {
         static void Main(string[] args)
         {
-            // De tre första hör ihop! //
+            // Kommentera ut den som ska testas //
+            //      De tre första hör ihop!     //
+
 
             // int x = ReadInt("Type a number: ");
             // int y = ReadInt("Type another number: ");
@@ -35,7 +37,7 @@ namespace oop2019
 
             //CalculateLandArea();
 
-            Invader();
+            //Invader();
 
             //Calculator();
 
@@ -581,11 +583,6 @@ namespace oop2019
 
 
     }
-
-
-
-
-
 
 
     // Klasser!
