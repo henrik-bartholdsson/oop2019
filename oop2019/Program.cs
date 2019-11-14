@@ -39,7 +39,7 @@ namespace oop2019
 
             //Invader();
 
-            //Calculator();
+            Calculator();
 
             //Tetris();
 
@@ -414,16 +414,16 @@ namespace oop2019
 
         static void Calculator()
         {
-            var formula = "1 + 2 * 3 / 9";
+            var formula = "2 + 2 * 3 / 9";
 
             var result = CalculateString(formula);
             Console.WriteLine("{0} = {1}", formula, result);
 
         } // Exercise 11, Calc 1/2
 
-        public static int CalculateString(string formula)
+        public static double CalculateString(string formula)
         {
-            int result;
+            double result;
             var calc = new string[formula.Split(' ').Length];
             int countTracker = 0;
 
@@ -443,21 +443,21 @@ namespace oop2019
                     switch (calc[i])
                     {
                         case "+":
-                            result = result + Convert.ToInt32(calc[i + 1]);
+                            result += Convert.ToInt32(calc[i + 1]);
                             break;
                         case "-":
-                            result = result - Convert.ToInt32(calc[i + 1]);
+                            result -= Convert.ToInt32(calc[i + 1]);
                             break;
                         case "*":
-                            result = result * Convert.ToInt32(calc[i + 1]);
+                            result *= Convert.ToInt32(calc[i + 1]);
                             break;
                         case "/":
-                            result = result / Convert.ToInt32(calc[i + 1]);
+                            result /= Convert.ToInt32(calc[i + 1]);
                             break;
                     }
             }
 
-            return 1;
+            return result;
         } // Exercise 11, Calc 2/2
 
         static void Tetris()
