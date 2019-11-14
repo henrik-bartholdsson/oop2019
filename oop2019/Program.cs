@@ -4,6 +4,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace oop2019
@@ -50,7 +51,13 @@ namespace oop2019
             //Invader();
 
             Console.WriteLine("Exercise 11, Calculator");
-            Calculator();
+            //Calculator();
+
+            Console.WriteLine("Exercise 12, Tetris");
+            //Tetris();
+
+            Console.WriteLine("Exercise 13, Create Tetris bag");
+            TetrisPieces();
 
             Console.ReadKey(); // Pause to view the reasults.
         }
@@ -406,14 +413,14 @@ namespace oop2019
                     calc[countTracker] += c.ToString();
 
                 if (c.Equals(' '))
-                countTracker++;
+                    countTracker++;
             }
 
             result = Convert.ToInt32(calc[0]);
-            for(int i = 1; i < calc.Length; i++)
+            for (int i = 1; i < calc.Length; i++)
             {
-                if(i % 2 != 0)
-                    switch(calc[i])
+                if (i % 2 != 0)
+                    switch (calc[i])
                     {
                         case "+":
                             result = result + Convert.ToInt32(calc[i + 1]);
@@ -431,9 +438,132 @@ namespace oop2019
             }
 
             return 1;
-        } // Exercise 11, Calc 1/2
+        } // Exercise 11, Calc 2/2
+
+        static void Tetris()
+        {
+            var block = new byte[,] {
+                { 0, 0, 0 },
+                { 1, 1, 1 },
+                { 0, 1, 0 },
+            };
+
+            int rowLength = block.GetLength(0);
+            int colLength = block.GetLength(1);
+
+            for (int k = 0; k < 10; k++)
+            {
+                Console.Clear();
+                for (int i = 0; i < rowLength; i++)
+                {
+                    for (int j = 0; j < colLength; j++)
+                        Console.Write(block[i, j] + " ");
+                    Console.WriteLine();
+                }
+                Thread.Sleep(1000);
+                block = Rotate(block);
+            }
+
+            Console.WriteLine();
+        } // Exercise 12, Tetris
+
+        static byte[,] Rotate(byte[,] b)
+        {
+            // Lite fulkod kanske? :)
+            int rowLength = b.GetLength(0);
+            int colLength = b.GetLength(1);
+            int getZero = 0;
+
+            // Looking for horizontal sum = 0
+            for (int i = 0; i < b.GetLength(1); i++)
+            {
+                getZero = 0;
+                for (int j = 0; j < b.GetLength(0); j++)
+                {
+                    getZero += b[i, j];
+                }
+                if (getZero == 0 && i == 0)
+                {
+                    b[1, 0] = 0;
+                    b[0, 1] = 1;
+                    return b;
+                }
+                else if (getZero == 0 && i == 2)
+                {
+                    b[1, 2] = 0;
+                    b[2, 1] = 1;
+                    return b;
+                }
+            }
+
+            // Looking for vertical sum = 0
+            for (int i = 0; i < b.GetLength(1); i++)
+            {
+                getZero = 0;
+                for (int j = 0; j < b.GetLength(0); j++)
+                {
+                    getZero += b[j, i];
+                }
+                if (getZero == 0 && i == 0)
+                {
+                    b[2, 1] = 0;
+                    b[1, 0] = 1;
+                    return b;
+                }
+                else if (getZero == 0 && i == 2)
+                {
+                    b[0, 1] = 0;
+                    b[1, 2] = 1;
+                    return b;
+                }
+            }
+            return b;
+        } // Exercise 12, Tetris
+
+        static void TetrisPieces()
+        {
+            var delayRandomSeed = new Random();
+            Console.Clear();
+            var bagOfItems = new List<string>();
+            for(int i = 0; i < 4; i++)
+            {
+                Thread.Sleep(delayRandomSeed.Next(10, 30));
+                bagOfItems = CreateBag();
+                Console.WriteLine("---- Bag nr# {0} ----", (i + 1));
+                foreach (var item in bagOfItems)
+                {
+                    Console.WriteLine("Item: {0}", item);
+                }
+            }
+            Console.WriteLine("End.....");
+            Console.ReadKey();
+        } // Exercise 12, Tetris bag
+
+        static List<string> CreateBag()
+        {
+            var random = new Random();
+            var rawMaterialBag = new List<int>();
+            var returningBag = new List<string>();
+            int randomIndex;
+
+            for(int i = 0; i < 7; i++)
+            {
+                rawMaterialBag.Add(i+1);
+            }
+
+            for (int i = 0; i < 7; i++)
+            {
+                randomIndex = random.Next(0, rawMaterialBag.Count);
+                returningBag.Add(rawMaterialBag[randomIndex].ToString());
+                rawMaterialBag.RemoveAt(randomIndex);
+            }
+            
+            return returningBag;
+        } // Exercise 12, Tetris bag
 
 
+
+        // förbättra nr9
 
     }
 
