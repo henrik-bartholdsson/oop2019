@@ -39,7 +39,7 @@ namespace oop2019
 
             //Invader();
 
-            Calculator();
+            //Calculator();
 
             //Tetris();
 
