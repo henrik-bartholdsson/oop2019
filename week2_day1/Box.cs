@@ -38,16 +38,9 @@ namespace week2_day1
             {
                 for (int j = 0; j <= _x; j++)
                 {
-                    if ((_xPos + (j + 1)) > Console.WindowWidth || (_xPos + (j + 1)) < 1)
-                        break;
-                    if ((_yPos + (i + 1)) > Console.WindowHeight || (_yPos + (i + 1)) < 1)
-                        break;
-
                     Console.SetCursorPosition((_xPos + j), (_yPos + i));
-
                     Console.Write("X");
                 }
-                Console.WriteLine();
             }
         }
     }

@@ -16,7 +16,7 @@ namespace week2_day1
 
             //Third();
 
-            //Forth();
+            Forth();
         }
 
         static void First()
@@ -73,17 +73,17 @@ namespace week2_day1
 
             while(true)
             {
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(50);
                 boxHeight = random.Next(2, 12);
                 boxWidth = boxHeight * 2;
                 boxYPos = random.Next(0, Console.WindowHeight);
                 boxXPos = random.Next(0, Console.WindowWidth);
-                boxColor = random.Next(0, (colors.Length -1));
+                boxColor = random.Next(1, (colors.Length -1));
 
-                if ((boxYPos + boxHeight) > Console.WindowHeight)
+                if ((boxYPos + boxHeight) >= (Console.WindowHeight -1))
                     boxYPos -= boxHeight;
 
-                if ((boxXPos + boxWidth) > Console.WindowHeight)
+                if ((boxXPos + boxWidth) >= Console.WindowWidth)
                     boxXPos -= boxWidth;
 
                 Console.BackgroundColor = colors[boxColor];
