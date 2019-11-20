@@ -14,11 +14,11 @@ namespace week2_day2
         public int available { get; set; }
 
 
-        public TransportShip(string _name, int _size)
+        public TransportShip(string name, int size)
         {
-            name = _name;
-            size = _size;
-            available = _size;
+            this.name = name;
+            this.size = size;
+            available = size;
         }
 
         public bool AddCargo(Cargo item)
@@ -55,8 +55,5 @@ namespace week2_day2
             Console.WriteLine("--------- Available space: " + available);
             Console.WriteLine();
         }
-
-
-
     }
 }

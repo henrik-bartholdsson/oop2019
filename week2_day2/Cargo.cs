@@ -10,10 +10,10 @@ namespace week2_day2
     {
         public string description { get; set; }
         public int size { get; set; }
-        public Cargo(string desc, int _size)
+        public Cargo(string desc, int size)
         {
             description = desc;
-            size = _size;
+            this.size = size;
         }
     }
 }
