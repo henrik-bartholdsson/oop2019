@@ -10,7 +10,7 @@ namespace week2_day2
     {
         public int size { get; set; }
         public string name { get; set; }
-        public Stack<Cargo> storage { get; set; }
+        public Stack<Cargo> storage = new Stack<Cargo>();
         public int available { get; set; }
 
 
@@ -19,19 +19,11 @@ namespace week2_day2
             name = _name;
             size = _size;
             available = _size;
-            storage.Push(new Cargo("p",1));
         }
 
         public bool AddCargo(Cargo item)
         {
-            int available = size;
-
-            foreach(var i in storage)
-            {
-                available -= i.size;
-            }
-
-            if (available + item.size > size)
+            if (available - item.size < 0)
                 return false;
             else
             {
@@ -41,20 +33,27 @@ namespace week2_day2
             }
         }
 
-
         public Cargo RemoveCargo()
         {
-            var lastCargo = storage.Peek();
-            storage.Pop();
+            var removedCargo = storage.Pop();
 
-            return lastCargo;
+            if (removedCargo.size > 0)
+                available += removedCargo.size;
+
+            return removedCargo;
         }
-
 
         public void ListCargo()
         {
+            Console.WriteLine("--- Cargo Items ---");
+            if(storage.Count < 1)
+            {
+                Console.WriteLine("<empty>");
+            }
             foreach(var item in storage)
-                Console.WriteLine(item);
+                Console.WriteLine(item.description);
+            Console.WriteLine("--------- Available space: " + available);
+            Console.WriteLine();
         }
 
 

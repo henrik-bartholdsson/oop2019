@@ -15,7 +15,5 @@ namespace week2_day2
             description = desc;
             size = _size;
         }
-
-
     }
 }
