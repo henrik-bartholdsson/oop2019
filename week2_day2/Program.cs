@@ -10,7 +10,7 @@ namespace week2_day2
     {
         static void Main(string[] args)
         {
-            var myShip = new TransportShip("The ship", 20);
+            var myShip = new TransportShip("USCSS Nostromo", 20);
             var beer = new Cargo("Beer", 6);
             var food = new Cargo("Food", 7);
             var tools = new Cargo("Tools", 8);

@@ -52,7 +52,7 @@ namespace week2_day2
             }
             foreach(var item in storage)
                 Console.WriteLine(item.description);
-            Console.WriteLine("--------- Available space: " + available);
+            Console.WriteLine("--------- {0}, availible space {1}: ", name, available);
             Console.WriteLine();
         }
     }
